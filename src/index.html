@@ -5,20 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Mesto</title>
-  <link rel="stylesheet" href="./pages/index.css">
+  <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks.main.css %>">
 </head>
 <body>
   <div class="root">
     <header class="header root__section">
-      <img src="./images/logo.svg" alt="mesto logo" class="logo">
+      <img src="<%=require('./images/logo.svg').default %>" alt="mesto logo" class="logo">
     </header>
-
+    
     <div class="profile root__section">
       <div class="user-info">
         <div class="user-info__photo"></div>
         <div class="user-info__data">
-          <h1 class="user-info__name">Jaques Causteau123</h1>
-          <p class="user-info__job">Sailor, Researcher</p>
+          <h1 class="user-info__name"></h1>
+          <p class="user-info__job"></p>
           <button class="button user-info__edit">Edit</button>
         </div>
         <button class="button user-info__button">+</button>
@@ -28,7 +28,7 @@
   <div class="places-list root__section"></div>
     <div class="popup popup-add-card">
       <div class="popup__content">
-        <img src="./images/close.svg" alt="закрыть" class="popup__close">
+        <img src="<%=require('./images/close.svg').default %>" alt="закрыть" class="popup__close">
         <h3 class="popup__title">Новое место</h3>
         <form class="popup__form" name="new">
             <input type="text" name="name" class="popup__input popup__input_type_name" placeholder="Название">
@@ -42,7 +42,7 @@
 
     <div class="popup edit ">
       <div class="edit__content">
-        <img src="./images/close.svg" alt="закрыть" class="edit__close popup__close">
+        <img src="<%=require('./images/close.svg').default %>" alt="закрыть" class="edit__close popup__close">
         <h3 class="edit__title">Редактировать профиль</h3>
         <form class="edit__form" name="edit" novalidate>     
             <input  id="name" type="text" name="username" class="edit__input edit__input_type_name" placeholder="Имя" 
@@ -59,23 +59,16 @@
     <div class="popup popup__image">
       <div class="popup__content popup__content_image">      
         <img 
-          src="./images/close.svg" 
+          src="<%=require('./images/close.svg').default %>" 
           alt="закрыть"
           class="popup__close popup__close_image"
         >   
         <img class="popup__photo" alt="здесь должна быть картинка"> 
       </div>
-    </div>
-    
-  </div>
+    </div>  
 
-  <script src="./js/Api.js"></script>
-  <script src="./js/Card.js"></script>
-  <script src="./js/CardInList.js"></script>
-  <script src="./js/FormValidator.js"></script>
-  <script src="./js/Popup.js"></script>
-  <script src="./js/script.js"></script>
-  
+  </div>
+  <script type="module" src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
 </body>
 </html>
 

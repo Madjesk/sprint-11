@@ -1,3 +1,5 @@
+import FormValidator from './FormValidator';
+
 class Popup {   
   popupIsOpened(element) {
     element.classList.add('popup_is-opened');
@@ -8,7 +10,6 @@ class Popup {
   } 
   
   open(event) {
-
     //открытие попапа с добавлением новых карточек
     if (event.target.classList.contains('user-info__button')) {
       popup.popupIsOpened(popupWindowCard);
@@ -40,6 +41,7 @@ class Popup {
     }
   }
 
+  //Закрытие попапа
   close(event) {
     if (event.type === 'submit') {
       event.target.closest('.popup').classList.remove('popup_is-opened');
@@ -51,10 +53,21 @@ class Popup {
 
   }
 }
-/* 
-* Надо исправить: Код разбит на разные файлы, но в отдельных файлах
-* глобальные переменные должны быть скрыты (обернуты в IIFE или просто функцию)
-* Объявлять новые переменные или инициализировать классы лучше в одном из файлов
-* как пример, создайте для этого index.js или script.js
-*/
+
+const popup = new Popup();
+
+export const popupWindowCard = document.querySelector('.popup-add-card');
+export const popupWindowEdit = document.querySelector('.edit');
+export const inputUserName = document.querySelector('.edit__input_type_name');
+export const inputUserAbout = document.querySelector('.edit__input_type_link-url');
+export const userName = document.querySelector('.user-info__name');
+export const userJob = document.querySelector('.user-info__job');
+const popupWindowPic = document.querySelector('.popup__image');
+const form = document.forms.new;
+const formEdit = document.forms.edit;
+
+document.addEventListener('click', popup.open);
+popupWindowCard.addEventListener('click', popup.close);
+popupWindowPic.addEventListener('click', popup.close);
+popupWindowEdit.addEventListener('click', popup.close);
 
