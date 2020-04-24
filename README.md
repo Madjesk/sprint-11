@@ -1,6 +1,6 @@
 # sprint-11
 
-# Ссылка на проект - https://barabanovklim.github.io/sprint-11/ 
+# Ссылка на проект -  https://barabanovklim.github.io/sprint-11/ 
 
 ## Версия v0.0.2
 

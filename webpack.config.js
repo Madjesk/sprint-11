@@ -25,9 +25,12 @@ module.exports = {
         test: /\.css$/i,
         use: [
           (isDev ? 'style-loader' : MiniCssExtractPlugin.loader),
-          'css-loader', 
-          'postcss-loader'
-       ]
+            {
+              loader:'css-loader',
+              options: {importLoaders: 2} //Это необходимо, чтобы два других лоадера запускались до css-loader'а.
+            },
+            'postcss-loader'
+          ]
       },
       {
         test: /\.(png|jpg|gif|ico|svg)$/,
