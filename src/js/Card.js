@@ -1,9 +1,10 @@
-class Card {
+export default class Card {
     constructor(name, linkPic) {
         this.name = name
         this.linkPic = linkPic
     }
 
+    //Создание карточки
     create() {
         const card = document.createElement('div')
         
@@ -42,13 +43,14 @@ class Card {
         return newCard
     }
 
+    //Ставим, убираем лайк
     like(event) {
         if (event.target.classList.contains('place-card__like-icon')) {
             event.target.classList.toggle('place-card__like-icon_liked');
         }
     }
         
-
+   //Удаляем карточку
    remove(event) {      
         if (event.target.classList.contains('place-card__delete-icon')) {
                     this.placeCard = event.target.parentElement.parentElement;

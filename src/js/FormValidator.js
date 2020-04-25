@@ -1,22 +1,29 @@
-class FormValidator {
+import {FormErrors} from '../index.js';
+export default class FormValidator {
     constructor(element) {
       this.element = element;
     }
   
+    //Проверяем на правильность введённых данных
     checkInputValidity(event) {
       let errorText = '';
+      const formErrors = {
+        validationEmpty: 'Это обязательно поле',
+        validationLenght: 'Должно быть от 2 до 30 символов',
+        validationLink: 'Здесь должна быть ссылка'
+      };  
       const errorLabel = event.target.nextElementSibling;
       const showError = () => errorLabel.classList.add('error-message_active');
       if (event.target.validity.valueMissing) {
-        errorText = errors.validationEmpty;
+        errorText = formErrors.validationEmpty;
         showError();
       }
       if (event.target.validity.tooShort) {
-        errorText = errors.validationLenght;
+        errorText = formErrors.validationLenght;
         showError();
       }
       if (event.target.name === 'link' && event.target.validity.typeMismatch) {
-        errorText = errors.validationLink;
+        errorText = formErrors.validationLink;
         showError();
       }
       if (event.target.validity.valid) {
@@ -26,6 +33,7 @@ class FormValidator {
   
     }
   
+    //Активируем, дизактивируем кнопку
     setSubmitButtonState(event) {
       const popupWindow = event.target.closest('.popup');
       const button = popupWindow.querySelector('.popup__button');
@@ -52,5 +60,4 @@ class FormValidator {
   
   }
 
-
-    
+  
